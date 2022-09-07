@@ -1,3 +1,5 @@
+import decimal
+
 import numpy as np
 
 # 方法1 array() 函数
@@ -15,3 +17,27 @@ print(type(x1))
 x2 = np.array([1, 2, 3, 4, 5.5])
 print(x2)
 print(type(x2))
+
+x3 = np.array([[1, 2, 3], [4, 5.5, 7]])
+print(x3)
+print(type(x3))
+
+# ndmin
+x4 = np.array([1, 2, 3], ndmin=2)
+print(x4)
+print(type(x4))
+
+# dtype
+x5 = np.array([1, 2, 3, 4, 5], dtype=decimal.Decimal)
+print(x5)
+print(type(x5))
+
+x6 = np.array([1, 2, 3, 4, 5], dtype='f')
+print(x6)
+print(type(x6))
+
+# 结构化类型数据
+student = np.dtype([("name", "S20"), ("age", "i4"), ("marks", "f4")])
+x8 = np.array([("sunck", 18, 999.99), ("kaige", 19,1.1)], dtype=student)
+print(x8)
+print(type(x8))
