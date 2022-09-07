@@ -9,6 +9,7 @@ x = np.arange(min_limit, max_limit, 0.1)
 y1 = np.sin(0.5 * x)
 y2 = np.cos(x)
 
+
 plt.subplot(1, 1, 1)
 plt.plot(x, y1)
 plt.title("sin")
