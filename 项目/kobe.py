@@ -1,10 +1,10 @@
 import numpy as np
 import xlrd3
 
+# 读取excel文件的内容并输出
 data = xlrd3.open_workbook(r'resources/NBA-data.xlsx')
 
 # table1 = data.sheet_names();
-
 sheet0 = data.sheet_by_index(0)
 
 nrows = sheet0.nrows
@@ -23,9 +23,8 @@ for row in range(nrows):
 print()
 print()
 
-# 取值
-# 统计项(多为正面指标): 时间, 投篮, 三分, 发球, 篮板, 助攻, 抢断, 盖帽, 失误[负面指标], 得分. 共10项
-
+# 选择特定列组装成arr待用
+# 统计项(多为正面指标): 首发, 时间, 投篮, 三分, 发球, 篮板, 助攻, 抢断, 盖帽, 失误[负面指标], 犯规, 得分. 共12项
 arr = np.zeros((nrows - 1, 12), dtype=float)
 for row in range(nrows - 1):
     arrRow = np.zeros((1, 12), dtype=float)
@@ -73,7 +72,7 @@ print()
 for row in range(arr.shape[0]):
     if row < arr.shape[0] - 1:
         res = are_u_ok(arr[row], arr[row + 1])
-        print('{:<2} - {:>2}  ==>  {:<6}'.format(row, row + 1, res))
+        print('{:<2} - {:>2}  ==>  {:.4f}'.format(row, row + 1, res))
     else:
         res = are_u_ok(arr[0], arr[row])
-        print('{:<2} - {:>2}  ==>  {:<6}'.format(row, 0, res))
+        print('{:<2} - {:>2}  ==>  {:<.4f}'.format(row, 0, res))
